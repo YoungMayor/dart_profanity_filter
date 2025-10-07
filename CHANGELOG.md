@@ -1,3 +1,13 @@
+## [Unreleased]
+
+- Added string extension methods for convenient profanity filtering
+- New `String.hasProfanity()` method returns true if the string contains profanity
+- New `String.censor({String? replaceWith})` method returns a censored version of the string
+- New `String.getAllProfanity()` method returns a list of all profane words found
+- Extensions use a static default ProfanityFilter instance for efficiency
+- Added comprehensive test suite with 16 new tests for extension methods
+- Added example files demonstrating string extension usage
+
 ## [2.0.0] Migrated to null safety
 - Released 2.0.0 with null safety
 - Fixed issue with getAllProfanity that was incorrectly detecting substrings as profanity.
