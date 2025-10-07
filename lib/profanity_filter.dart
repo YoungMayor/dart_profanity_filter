@@ -2,6 +2,8 @@ library profanity_filter;
 
 import './default_list.dart';
 
+export 'profanity_filter_extension.dart';
+
 ///Filter that lets you check and censor strings with profanity.
 ///
 ///Create an instance with the default constructor to use the default list of
