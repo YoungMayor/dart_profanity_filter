@@ -10,6 +10,8 @@ Simple Dart class to create filters with methods to check and censor strings aga
 
 You can also use the filters to filter out a custom set of words, by using the `ProfanityFilter.filterOnly()` constructor.
 
+For convenience, String extension methods are available to check and censor strings directly without creating a filter instance.
+
 ## Usage
 
 To use this plugin, add `profanity_filter` as a [dependency in your pubspec.yaml file](https://flutter.dev/platform-plugins/).
@@ -84,6 +86,49 @@ String cleanString = filter.censor('you are an ass'); //cleanString: 'you are an
 
 Optionally, you can provide your own clean replacement word to the `replaceWith` named parameter.
 `filter.censor(string, replaceWith:'[censored]')` will replace any profanity in `string` with `[censored]`
+
+## String Extensions
+
+For convenience, you can use String extension methods to check and censor strings directly without creating a filter instance. These extensions use the default profanity list.
+
+To use the extensions, make sure to import the package:
+
+```dart
+import 'package:profanity_filter/profanity_filter.dart';
+```
+
+### `hasProfanity()` - Check if string contains profanity
+
+Call the `hasProfanity()` method directly on a string.
+
+#### Example
+
+```dart
+bool hasBadWords = 'hello bitches'.hasProfanity(); // true
+bool isClean = 'hello friends'.hasProfanity(); // false
+```
+
+### `censor()` - Censor a string
+
+Call the `censor()` method directly on a string to get a censored version.
+
+#### Example
+
+```dart
+String clean = 'you are an ass'.censor(); // 'you are an ***'
+String custom = 'you are an ass'.censor(replaceWith: '[censored]'); // 'you are an [censored]'
+```
+
+### `getAllProfanity()` - Get list of profane words
+
+Call the `getAllProfanity()` method directly on a string to get a list of profane words found.
+
+#### Example
+
+```dart
+List<String> words = 'what the fuck'.getAllProfanity(); // ['fuck']
+List<String> noWords = 'what the fish'.getAllProfanity(); // []
+```
 
 ## Default Profanity List
 
